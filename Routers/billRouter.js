@@ -88,7 +88,7 @@ billRouter.post('/bill/upload/image/:id',auth,upload.single('billImg'),async (re
     if (req.user.admin) {
       const bill = await Bill.findById(req.params.id);
       const buffer = await sharp(req.file.buffer)
-        // .resize({ width: 500, height: 500 })
+        .resize({ width: 1024, height: 1024 })
         .jpeg()
         .toBuffer();
       bill.image = buffer;
