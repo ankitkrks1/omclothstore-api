@@ -59,11 +59,11 @@ userShcema.pre("save", async function (next) {
 userShcema.statics.findUser = async (name, password) => {
   const user = await User.findOne({ name });
   if (!user) {
-    throw {error:"Unable to login"};
+    throw {error:"Incorrect Username or Password"};
   }
   const isMatch = await bcrypt.compare(password, user.password);
   if (!isMatch) {
-    throw {error :"Unable to Login -p"};
+    throw {error :"Incorrect Username or Password"};
   }
   return user;
 };
