@@ -31,6 +31,11 @@ const userShcema = new mongoose.Schema(
   },
   { timestamps: true }
 );
+
+
+// add this in your schema if vritual is not work, this method working for me
+userShcema.set('toObject', { virtuals: true })
+userShcema.set('toJSON', { virtuals: true })
 //Virtual Property in schema 
 userShcema.virtual('products', {
   ref: 'Product',
